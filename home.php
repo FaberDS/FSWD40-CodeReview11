@@ -6,6 +6,8 @@
     if(isset($_SESSION['user_is_logged_in'])){
      $u_id = $_SESSION['user_data']['id'];
            
+    }else{
+        redirect('index.php');
     }
     $db = new Pdocon;
     $db2 = new Pdocon;

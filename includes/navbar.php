@@ -21,6 +21,8 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+    <?php if($loged_in){
+        ?>
       <li class="nav-item active">
         <a class="nav-link" href="home.php">Home <span class="sr-only">(current)</span></a>
       </li>
@@ -30,8 +32,7 @@
       
       
     </ul>
-    <?php if($loged_in){
-        ?>
+    
             <a class="nav-link disabled" href="action/logout.php"><i class='fas fa-sign-out-alt'></i></a>
         <?php
     } else{
