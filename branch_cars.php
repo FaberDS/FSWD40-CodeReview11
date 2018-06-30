@@ -34,7 +34,7 @@
     <div class="container">
         <div class="row">
             
-            <div class="col-md-11 col-sm-11 mx-auto">
+            <div class="col-md-11 col-sm-11 mx-auto mt-5">
                 
                     <div class="card" style="width: 100%;">
                         <div class="card-content p-2 d-flex flex-row" style="width: 50% max-width: 100%;">
@@ -62,9 +62,9 @@
                     </div>
                 
             </div>
-            <div class="col-md-8 col-sm-12 mx-auto">
+            <div class="col-md-8 col-sm-12 mx-auto mt-5">
                 
-                <h3>Available cars at this branch</h3>
+                <h3>Cars at this branch</h3>
                 <div class="table-responsive">
                     <table class="table table-sm">
                         <thead>

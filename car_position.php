@@ -14,8 +14,14 @@
  
     $db1->query('SELECT * FROM `cars`
                 LEFT JOIN `locations`ON `cars`.`fk_location_id`= `locations`.`id`');
+    
+    $db2 = new Pdocon;
+ 
+    $db2->query('SELECT * FROM `locations` WHERE `locations`.`branch`= "true"');
+               
 
     $cars = $db1->fetchMultiple();
+    $branches = $db2->fetchMultiple();
  
    
 ?>
@@ -45,8 +51,29 @@
             foreach($cars as $car) :
             $i ++;
         ?>
-        var branch<?= $i;?> = {lat: <?= $car['lat'];?>, lng: <?= $car['lon'];?>};
-        var marker = new google.maps.Marker({position: branch<?= $i;?>, map: map, customInfo: "The ID of this car is <em><?= $car['id'] ?></em><br> it's actual location is <em><?= $car['location'];?>.</em>"});
+        var marker_img = 'img/marker/marker.png' ;
+        var coordinates<?= $i;?> = {lat: <?= $car['lat'];?>, lng: <?= $car['lon'];?>};
+        var marker = new google.maps.Marker({position: coordinates<?= $i;?>, map: map, icon: marker_img, customInfo: "The ID of this car is <em><?= $car['id'] ?></em><br> it's actual location is <em><?= $car['location'];?>.</em>"});
+            marker.addListener('mouseover', function() {
+            
+                $("#msg").show();
+                $msg_box.innerHTML =this.customInfo
+                setTimeout(function() {
+                    $("#msg").hide()
+                }, 4000);
+            });
+  
+        <?php
+            endforeach;
+        ?>
+            <?php 
+            $i = 0;
+            foreach($branches as $branch) :
+            $i ++;
+        ?>
+        var marker_img = 'img/marker/red_marker.png' ;
+        var coordinates<?= $i;?> = {lat: <?= $branch['lat'];?>, lng: <?= $branch['lon'];?>};
+        var marker = new google.maps.Marker({position: coordinates<?= $i;?>, map: map, icon: marker_img, customInfo: "This is the <em><?= $branch['location'] ?></em> brench"});
             marker.addListener('mouseover', function() {
             
                 $("#msg").show();
