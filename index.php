@@ -8,6 +8,17 @@
 <div class="container-fluid">
 
     <h1>Welcome on Index</h1>
+    <div class="jumbotron jumbotron-fluid" id="index_jumbo">
+        <div class="container">
+        <h1 class="display-4">Welcome to PHP-rent</h1>
+        <p class="lead">For each case we have the right car. Just login and check our full range offer!</p>
+        <p class="lead mt-5 text-center">
+            <a class="btn btn-lg btn-info m-5" href="index.php?login">Login</a>
+            <a class="btn btn-lg btn-info m-5" href="index.php?register">Register</a>
+        </p>
+       
+    </div>
+</div>
 
 </div>
 <div class="msg"><?php showmsg(); ?></div>
@@ -15,9 +26,9 @@
 <?php if(isset($_SESSION['user_is_logged_in'])){
             $fullname = $_SESSION['user_data']['email'];
            
-            echo "Sesseion";  
+            // echo "Sesseion";  
         } else{
-            echo "Session failed";
+            // echo "Session failed";
         }
         ?>
         <?php if(isset($_GET['login'])){

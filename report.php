@@ -11,13 +11,16 @@
      
     $db1 = new Pdocon;
     $db2 = new Pdocon;
-    
+  
    
     $db1->query('SELECT * FROM `users` WHERE `users`.`id`='.$u_id.'' );
-    $db2->query('SELECT * FROM `locations` WHERE `locations`.`branch`= "true"');
-        //have to count cars per location and print
-
+    $db2->query("SELECT DISTINCT `locations`.`location` FROM `cars` 
+                LEFT JOIN `locations`ON `cars`.`fk_location_id`= `locations`.`id`
+                WHERE `locations`.`branch`= 'true'");
+   
     $admin = $db1->fetchSingle();
+
+
     $branches = $db2->fetchMultiple();
  
    
@@ -39,6 +42,9 @@
                         ?>
                         <tr>
                             <td><?= $branch['location'];?></td>
+                            <td>
+                                
+                            </td>
                         </tr>
                         <?php
                             endforeach;

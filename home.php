@@ -27,16 +27,17 @@
 
         ?>
         <div class="container">
+            <h1>Our Fleet</h1>
                 <div class="msg"><?php showmsg(); ?></div>
 
                 <!-- echo "<a class='dropdown-item' href='details.php?pub_id=".$pub_nam['publisher_id']."'>".$pub_nam['publisher_name']."</a>"; -->
                 <?php
-                            if($admin){
+                            if($admin['role'] == 'Admin'){
                                 ?>
         
                                     
                                         <button id="btnGroupDrop1" type="button" class="btn btn-primary btn-lg btn-block"  aria-haspopup="true" aria-expanded="false">
-                                       <a href="report.php" class="text-white">List all Locations</a>
+                                       <a href="report.php" class="text-white">List all Locations for Admin</a>
                                         </button>
                                  
                                 <?php
@@ -162,7 +163,7 @@
                             foreach($rows as $row) :?>
                            
                             <div class="card col-md-6 col-sm-12" >
-                                <img class="card-img-top" src='img/<?= $row['img']?>' alt="Image <?= $row['brand'].$row['model'];?>">
+                                <img class="card-img-top" src='img/car_img/<?= $row['img']?>' alt="Image <?= $row['brand'].$row['model'];?>">
                                 <div class="card-header">
                                     <small><h4><?= $row['brand']. " " .$row['model'] ;?></h4><?= $row['type'];?></small>
                                 </div>
