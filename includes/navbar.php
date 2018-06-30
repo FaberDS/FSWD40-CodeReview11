@@ -1,13 +1,16 @@
 <?php
-
+  
     $loged_in= false;
     if(isset($_SESSION['user_is_logged_in'])){
             $loged_in = true;
             $fullname = $_SESSION['user_data']['fullname'];
            
-            echo "Session";  
+            // echo "Session";  
+             
+
+            
         } else{
-            echo "Session failed";
+            // echo "Session failed";
         }
 ?>
 <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
@@ -19,10 +22,10 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="home.php">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link" href="branches.php">Our Branches</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

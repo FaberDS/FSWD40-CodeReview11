@@ -1,0 +1,12 @@
+#cars_row i, #cars_row li>img{
+    margin-right: 20px;
+}
+.home_book_btn{
+    font-size: 25px !important;
+}
+.true i{
+    color: green;
+}
+.false i{
+    color: red;
+}

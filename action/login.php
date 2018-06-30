@@ -40,7 +40,6 @@ if(isset($_POST['submit_login'])){
     
     if($row){
         
-        $d_image        =   $row['img'];
         
         $d_name         =   $row['full_name'];
         
