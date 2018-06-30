@@ -50,6 +50,7 @@ if(isset($_POST['submit_login'])){
         'fullname'      =>   $row['fullname'],
         'id'            =>   $row['id'],
         'email'         =>   $row['email'],
+        'role'          =>   $row['role']
 
         );
         $_SESSION['user_is_logged_in']  =  true;

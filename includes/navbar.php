@@ -1,5 +1,6 @@
 <?php
-  
+                                    
+
     $loged_in= false;
     if(isset($_SESSION['user_is_logged_in'])){
             $loged_in = true;
@@ -29,6 +30,23 @@
       <li class="nav-item">
         <a class="nav-link" href="branches.php">Our Branches</a>
       </li>
+      <?php 
+        if(isset($_SESSION['user_data']['role'])){
+          if(($_SESSION['user_data']['role'] == 'Admin')){
+
+          
+      ?>
+          <li class="nav-item">
+            <a class="nav-link" href="car_position.php">See Locations of all cars</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="report.php">Get Report</a>
+          </li>
+      <?php
+            }
+            }
+
+      ?>
       
       
     </ul>

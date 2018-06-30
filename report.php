@@ -13,48 +13,51 @@
     $db2 = new Pdocon;
   
    
-    $db1->query('SELECT * FROM `users` WHERE `users`.`id`='.$u_id.'' );
-    $db2->query("SELECT DISTINCT `locations`.`location` FROM `cars` 
-                LEFT JOIN `locations`ON `cars`.`fk_location_id`= `locations`.`id`
-                WHERE `locations`.`branch`= 'true'");
+    $db1->query('   SELECT `cars`.`id` 
+                    as ID, `locations`.`location` 
+                    as loc,COUNT(*) 
+                    as cou FROM `cars`
+                    JOIN `locations` 
+                    ON `cars`.`fk_location_id` = `locations`.`id`
+                    GROUP BY fk_location_id 
+                    ORDER BY cou DESC ');
+    
    
-    $admin = $db1->fetchSingle();
+    $branches = $db1->fetchMultiple();
 
-
-    $branches = $db2->fetchMultiple();
- 
-   
 ?>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-md-8 col-sm-12 mx-auto text-center m-5">
-                <h2>Welcome Admin <?= $admin['full_name'];?></h2>
-                <table class="table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Location Name:</th>
-                            <th>Amount of Cars:</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                            foreach($branches as $branch) :
-                        ?>
-                        <tr>
-                            <td><?= $branch['location'];?></td>
-                            <td>
-                                
-                            </td>
-                        </tr>
-                        <?php
-                            endforeach;
-                        ?>
-                    </tbody>
-                </table>
+            <div class="col-md-8 col-sm-11 mx-auto bg-light text-center m-5">
+                <h1>Welcome Admin </h1>
+                <div class="table-responsive">  
+                    <table class="table table-striped">
+                        <thead>
+                            <tr class="h4">
+                                <th>Location Name:</th>
+                                <th>Amount of Cars:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                                foreach($branches as $branch) :
+                            ?>
+                            <tr>
+                                <td><?= $branch['loc'];?></td>
+                                <td><?= $branch['cou'];?>
+                                    
+                                </td>
+                            </tr>
+                            <?php
+                                endforeach;
+                            ?>
+                        </tbody>
+                    </table>
+                    </div> 
             </div>
         </div>
     </div>
-
+    
 <?php
     include('includes/footer.php');
 ?>

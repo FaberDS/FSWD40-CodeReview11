@@ -11,6 +11,12 @@
     color: red;
 }
 #index_jumbo{
+   
     background-image: url('img/logos/jumbo_img.jpeg');
-    color: green;
+    background-size: cover;
+}
+
+
+#map {
+height: 30%;
 }

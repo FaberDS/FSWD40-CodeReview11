@@ -1,6 +1,5 @@
 <?php  
     include('includes/header.php');
-
     include('config/pdocon.php');
     include('includes/functions.php');
     if(isset($_SESSION['user_is_logged_in'])){
@@ -14,19 +13,16 @@
     $db3 = new Pdocon;
     $db4 = new Pdocon;
     $db5 = new Pdocon;
-
     $db->query('SELECT DISTINCT `cars`.`brand` FROM `cars`');
     $db2->query('SELECT DISTINCT `cars`.`class` FROM `cars`');
     $db3->query('SELECT DISTINCT `cars`.`available` FROM `cars`');
     $db4->query('SELECT * FROM `users` WHERE `users`.`id`='.$u_id.'' );
     $db5->query('SELECT * FROM `locations` WHERE `locations`.`branch`= "true"');
-
     $brands = $db->fetchMultiple();
     $classes = $db2->fetchMultiple();
     $avails = $db3->fetchMultiple();
     $admin = $db4->fetchSingle();
     $branches = $db5->fetchMultiple();
-
         ?>
         <div class="container">
             <h1>Our Fleet</h1>
@@ -120,33 +116,26 @@
                         //Create a card for each car
                         $select_stat = "";
                         
-
                         if(isset($_GET['brand'])){
                             echo "";
                             $select_val = $_GET['brand'];
                             if($select_val !== "all"){
                                 $select_stat = "WHERE `cars`.`brand` ='".$select_val."'";
-
                             }
-
                         }
                         if(isset($_GET['class'])){
                             $select_val = $_GET['class'];
                             if($select_val !== "all"){
                                 $select_stat = "WHERE `cars`.`class` ='".$select_val."'";
-
                             }
-
                         }
                         if(isset($_GET['available'])){
                             $select_val = $_GET['available'];
                             if($select_val !== "all"){
                                 $select_stat = "WHERE `cars`.`available` ='".$select_val."'";
-
                             }else{
                                  $select_stat = "";
                             }
-
                         }
                         
                         $db->query('SELECT * FROM `cars`
@@ -155,7 +144,6 @@
                                         LEFT JOIN `car_descriptions` 
                                             ON `cars`.`fk_car_description_id` = `car_descriptions`.`id`
                                         '.$select_stat.'');
-
                         $rows = $db->fetchMultiple();
  
                             
@@ -209,7 +197,6 @@
 
                             
                         <?php endforeach ;
-
                     }?>
                 </div>
     
