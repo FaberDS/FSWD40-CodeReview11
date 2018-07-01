@@ -9,7 +9,7 @@ class Pdocon{
     //Localhost Db information
         private $host       = "localhost";
         private $user       = "root";
-        private $pass       = "";
+        private $pass       = "root";
         private $dbnm       = "cr11_denis_schuele_php_car_rental";
 //   
 
